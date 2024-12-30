@@ -14,6 +14,8 @@ public class KingScript : MonoBehaviour
     private float[,] aattack;
     public delegate void MoveInfo(int[] location, float[,] amove, float x, float y, string pieceId, float[,] aattack);
     public static event MoveInfo ShowKingMoveInfo;
+    public delegate void KingDead(string pieceId);
+    public static event KingDead KingDestroyed;
 
     private void BroadMatrix()
     {
@@ -39,8 +41,6 @@ public class KingScript : MonoBehaviour
             {
                 if (matran[i, j] == pieceId)
                 {
-                    Debug.Log("found king location");
-                    Debug.Log("king location: " + i + ", " + j);
                     location[0] = i;
                     location[1] = j;
                     stop = 1;
@@ -259,6 +259,7 @@ public class KingScript : MonoBehaviour
             GameScript.RaisePieceMoved -= PieceMoved;
             GameScript.RaisePieceAttacked -= PieceAttacked;
             GameScript.RaiseAiMoved -= PieceAttacked;
+            KingDestroyed?.Invoke(pieceId);
             Debug.Log(pieceId + " destroyed");
         }
     }
@@ -268,6 +269,13 @@ public class KingScript : MonoBehaviour
         GameScript.RaisePieceMoved += PieceMoved;
         GameScript.RaisePieceAttacked += PieceAttacked;
         GameScript.RaiseAiMoved += PieceAttacked;
+    }
+
+    private void OnDestroy()
+    {
+        GameScript.RaisePieceMoved -= PieceMoved;
+        GameScript.RaisePieceAttacked -= PieceAttacked;
+        GameScript.RaiseAiMoved -= PieceAttacked;
     }
 
     private void OnMouseDown()

@@ -316,4 +316,17 @@ public class GameScript : MonoBehaviour
         KingScript.ShowKingMoveInfo += ReceivePieceMoveInfo;
         GameAiScript.ShowAiMoveInfo += ReceiveAiMoveInfo;
     }
+
+    private void OnDestroy()
+    {
+        MoveSquareScript.RaiseMoveSquareClicked -= PieceMove;
+        AttackSquareScript.RaiseAttackSquareClicked -= PieceAttack;
+        RookScript.ShowRookMoveInfo -= ReceivePieceMoveInfo;
+        KnightScript.ShowKnightMoveInfo -= ReceivePieceMoveInfo;
+        PawnScript.ShowPawnMoveInfo -= ReceivePieceMoveInfo;
+        BishopScript.ShowBishopMoveInfo -= ReceivePieceMoveInfo;
+        QueenScript.ShowQueenMoveInfo -= ReceivePieceMoveInfo;
+        KingScript.ShowKingMoveInfo -= ReceivePieceMoveInfo;
+        GameAiScript.ShowAiMoveInfo -= ReceiveAiMoveInfo;
+    }
 }

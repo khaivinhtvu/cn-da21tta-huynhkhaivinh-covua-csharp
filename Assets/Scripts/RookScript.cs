@@ -228,6 +228,13 @@ public class RookScript : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        GameScript.RaisePieceMoved -= PieceMoved;
+        GameScript.RaisePieceAttacked -= PieceAttacked;
+        GameScript.RaiseAiMoved -= PieceAttacked;
+    }
+
     private void PieceAttacked(float x, float y, string newpieceId, string newattackId)
     {
         if (pieceId == newpieceId)

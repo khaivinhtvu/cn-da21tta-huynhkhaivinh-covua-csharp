@@ -270,6 +270,13 @@ public class KnightScript : MonoBehaviour
         GameScript.RaiseAiMoved += PieceAttacked;
     }
 
+    private void OnDestroy()
+    {
+        GameScript.RaisePieceMoved -= PieceMoved;
+        GameScript.RaisePieceAttacked -= PieceAttacked;
+        GameScript.RaiseAiMoved -= PieceAttacked;
+    }
+
     private void OnMouseDown()
     {
         Debug.Log("knight clicked");

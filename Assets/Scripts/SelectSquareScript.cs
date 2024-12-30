@@ -1,4 +1,5 @@
 using UnityEngine;
+using static GameScript;
 
 public class SelectSquareScript : MonoBehaviour
 {
@@ -11,5 +12,10 @@ public class SelectSquareScript : MonoBehaviour
     void Start()
     {
         GameScript.RaiseClearAllSquare += ClearSquare;
+    }
+
+    private void OnDestroy()
+    {
+        GameScript.RaiseClearAllSquare -= ClearSquare;
     }
 }

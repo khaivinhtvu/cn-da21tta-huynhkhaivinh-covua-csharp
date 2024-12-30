@@ -7,4 +7,9 @@ public class SceneManagerScript : MonoBehaviour
     { 
         SceneManager.LoadScene(scenename);
     }
+
+    public void SceneRestart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

@@ -16,6 +16,11 @@ public class AttackSquareScript : MonoBehaviour
         GameScript.RaiseClearAllSquare += ClearSquare;
     }
 
+    private void OnDestroy()
+    {
+        GameScript.RaiseClearAllSquare -= ClearSquare;
+    }
+
     private void OnMouseDown()
     {
         Debug.Log("attack square clicked");

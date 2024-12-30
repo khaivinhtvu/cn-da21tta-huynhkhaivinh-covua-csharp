@@ -35,7 +35,6 @@ public class GameAiScript : MonoBehaviour
 
     private void RaiseMoveInfo()
     {
-        //Astar();
         BroadMatrix();
         BFS.BFSALg bfs = new BFS.BFSALg();
         bfs.Matran = this.matran;
@@ -49,5 +48,10 @@ public class GameAiScript : MonoBehaviour
         {
             GameScript.CallAiMove += RaiseMoveInfo;
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameScript.CallAiMove -= RaiseMoveInfo;
     }
 }

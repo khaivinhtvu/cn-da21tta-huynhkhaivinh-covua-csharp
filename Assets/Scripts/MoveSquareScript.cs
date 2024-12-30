@@ -16,6 +16,11 @@ public class MoveSquareScript : MonoBehaviour
         GameScript.RaiseClearAllSquare += ClearSquare;
     }
 
+    private void OnDestroy()
+    {
+        GameScript.RaiseClearAllSquare -= ClearSquare;
+    }
+
     private void OnMouseDown()
     {
         Debug.Log("move square clicked");
