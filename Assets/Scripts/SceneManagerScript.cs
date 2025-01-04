@@ -12,4 +12,9 @@ public class SceneManagerScript : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void ExitApp()
+    {
+        Application.Quit();
+    }
 }

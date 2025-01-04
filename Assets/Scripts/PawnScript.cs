@@ -59,7 +59,6 @@ public class PawnScript : MonoBehaviour
 
     private void MoveScan()
     {
-        //Tìm đường đi hợp lệ
         if (hasmoved == false && pieceId.Contains("w"))
         {
             amove = new float[2, 2];
@@ -67,15 +66,17 @@ public class PawnScript : MonoBehaviour
             amove[0, 1] = -1;
             amove[1, 0] = -1;
             amove[1, 1] = -1;
-            if (matran[location[0] - 1, location[1]] == "0")
+            for (int i = 1; i < 3; i++)
             {
-                amove[0, 0] = location[0] - 1;
-                amove[0, 1] = location[1];
-            }
-            if (matran[location[0] - 2, location[1]] == "0")
-            {
-                amove[1, 0] = location[0] - 2;
-                amove[1, 1] = location[1];
+                if (matran[location[0] - i, location[1]] == "0")
+                {
+                    amove[i - 1, 0] = location[0] - i;
+                    amove[i - 1, 1] = location[1];
+                }
+                if (matran[location[0] - i, location[1]].Contains("b"))
+                {
+                    break;
+                }
             }
         }
 
@@ -86,15 +87,17 @@ public class PawnScript : MonoBehaviour
             amove[0, 1] = -1;
             amove[1, 0] = -1;
             amove[1, 1] = -1;
-            if (matran[location[0] + 1, location[1]] == "0")
+            for (int i = 1; i < 3; i++)
             {
-                amove[0, 0] = location[0] + 1;
-                amove[0, 1] = location[1];
-            }
-            if (matran[location[0] + 2, location[1]] == "0")
-            {
-                amove[1, 0] = location[0] + 2;
-                amove[1, 1] = location[1];
+                if (matran[location[0] + i, location[1]] == "0")
+                {
+                    amove[i - 1, 0] = location[0] + i;
+                    amove[i - 1, 1] = location[1];
+                }
+                if (matran[location[0] + i, location[1]].Contains("w"))
+                {
+                    break;
+                }
             }
         }
 

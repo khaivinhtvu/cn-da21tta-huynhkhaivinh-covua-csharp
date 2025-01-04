@@ -109,23 +109,21 @@ public class BFS
 
             if (location[0] == 1 && pieceId.Contains("b"))
             {
-                if (matran[location[0] + 1, location[1]] == "0")
+                for (int i = 1; i < 3; i++)
                 {
-                    move = new float[1, 2];
-                    move[0, 0] = location[0] + 1;
-                    move[0, 1] = location[1];
-                    MoveScan.MoveInfo moveInfo = new MoveScan.MoveInfo(id, move);
-                    moveInfoList[tam] = moveInfo;
-                    tam++;
-                }
-                if (matran[location[0] + 2, location[1]] == "0")
-                {
-                    move = new float[1, 2];
-                    move[0, 0] = location[0] + 2;
-                    move[0, 1] = location[1];
-                    MoveScan.MoveInfo moveInfo = new MoveScan.MoveInfo(id, move);
-                    moveInfoList[tam] = moveInfo;
-                    tam++;
+                    if (matran[location[0] + i, location[1]] == "b" && pieceId.Contains("b"))
+                    {
+                        break;
+                    }
+                    if (matran[location[0] + i, location[1]] == "0")
+                    {
+                        move = new float[1, 2];
+                        move[0, 0] = location[0] + i;
+                        move[0, 1] = location[1];
+                        MoveScan.MoveInfo moveInfo = new MoveScan.MoveInfo(id, move);
+                        moveInfoList[tam] = moveInfo;
+                        tam++;
+                    }
                 }
             }
 
@@ -1184,12 +1182,12 @@ public class BFS
 
                 if (id.Contains("q"))
                 {
-                    h = h + 5;
+                    h = h + 1;
                 }
 
                 if (id.Contains("r"))
                 {
-                    h = h + 2;
+                    h = h + 1;
                 }
 
                 if (id.Contains("s"))
