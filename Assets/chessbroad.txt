@@ -1,8 +1,0 @@
-rb1 nb1 sb1 0 kb 0 nb2 rb2
-pb1 pb2 0 0 0 0 pb7 pb8
-0 0 0 0 0 0 0 0
-0 0 pb3 0 0 pw5 0 0
-0 0 sw2 0 0 sb2 0 0
-0 0 0 0 sw1 0 0 0
-pw1 pw2 pw3 0 0 0 pw7 pw8
-rw1 nw1 0 kw 0 0 nw2 rw2
